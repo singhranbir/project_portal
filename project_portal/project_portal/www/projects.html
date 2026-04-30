@@ -1,0 +1,140 @@
+{% extends "templates/web.html" %}
+
+{% block title %}My Projects{% endblock %}
+
+{% block head_include %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/custom_portal/css/portal.css">
+{% endblock %}
+
+{% block page_content %}
+<div class="pp-root" id="projectPortal">
+
+  <!-- Top Nav Bar -->
+  <nav class="pp-nav">
+    <div class="pp-nav-inner">
+      <div class="pp-nav-brand">
+        <span class="pp-nav-icon">◈</span>
+        <span class="pp-nav-title">Project Portal</span>
+      </div>
+      <div class="pp-nav-user">
+        <span class="pp-user-dot"></span>
+        <span id="navUserName">Loading...</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <header class="pp-hero">
+    <div class="pp-hero-bg">
+      <div class="pp-hero-blob pp-hero-blob--1"></div>
+      <div class="pp-hero-blob pp-hero-blob--2"></div>
+    </div>
+    <div class="pp-container">
+      <p class="pp-hero-eyebrow">Dashboard</p>
+      <h1 class="pp-hero-heading">Your Projects</h1>
+      <p class="pp-hero-sub" id="heroSubtext">Loading your workspace...</p>
+    </div>
+  </header>
+
+  <!-- Stats Strip -->
+  <section class="pp-stats-strip">
+    <div class="pp-container">
+      <div class="pp-stats-grid" id="statsGrid">
+        <div class="pp-stat-card pp-stat-card--skeleton">
+          <div class="pp-skeleton pp-skeleton--sm"></div>
+          <div class="pp-skeleton pp-skeleton--lg"></div>
+        </div>
+        <div class="pp-stat-card pp-stat-card--skeleton">
+          <div class="pp-skeleton pp-skeleton--sm"></div>
+          <div class="pp-skeleton pp-skeleton--lg"></div>
+        </div>
+        <div class="pp-stat-card pp-stat-card--skeleton">
+          <div class="pp-skeleton pp-skeleton--sm"></div>
+          <div class="pp-skeleton pp-skeleton--lg"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Grid -->
+  <main class="pp-main">
+    <div class="pp-container">
+      <div class="pp-section-header">
+        <h2 class="pp-section-title">All Projects</h2>
+        <div class="pp-filter-bar">
+          <button class="pp-filter-btn pp-filter-btn--active" data-filter="all">All</button>
+          <button class="pp-filter-btn" data-filter="Open">Active</button>
+          <button class="pp-filter-btn" data-filter="Completed">Completed</button>
+          <button class="pp-filter-btn" data-filter="Cancelled">Cancelled</button>
+        </div>
+      </div>
+
+      <div class="pp-projects-grid" id="projectsGrid">
+        <!-- Skeleton loaders -->
+        <div class="pp-project-card pp-project-card--skeleton">
+          <div class="pp-skeleton pp-skeleton--tag"></div>
+          <div class="pp-skeleton pp-skeleton--title"></div>
+          <div class="pp-skeleton pp-skeleton--text"></div>
+          <div class="pp-skeleton pp-skeleton--text pp-skeleton--short"></div>
+          <div class="pp-skeleton pp-skeleton--bar"></div>
+        </div>
+        <div class="pp-project-card pp-project-card--skeleton">
+          <div class="pp-skeleton pp-skeleton--tag"></div>
+          <div class="pp-skeleton pp-skeleton--title"></div>
+          <div class="pp-skeleton pp-skeleton--text"></div>
+          <div class="pp-skeleton pp-skeleton--bar"></div>
+        </div>
+        <div class="pp-project-card pp-project-card--skeleton">
+          <div class="pp-skeleton pp-skeleton--tag"></div>
+          <div class="pp-skeleton pp-skeleton--title"></div>
+          <div class="pp-skeleton pp-skeleton--text"></div>
+          <div class="pp-skeleton pp-skeleton--bar"></div>
+        </div>
+      </div>
+
+      <div class="pp-empty-state" id="emptyState" style="display:none">
+        <div class="pp-empty-icon">◈</div>
+        <h3>No Projects Assigned</h3>
+        <p>You have not been assigned to any projects yet. Contact your administrator.</p>
+      </div>
+    </div>
+  </main>
+
+</div>
+
+<!-- Project Card Template -->
+<template id="projectCardTemplate">
+  <div class="pp-project-card" data-project-name="">
+    <div class="pp-project-card-top">
+      <span class="pp-status-badge"></span>
+      <span class="pp-project-date"></span>
+    </div>
+    <h3 class="pp-project-name"></h3>
+    <p class="pp-project-desc"></p>
+    <div class="pp-project-meta">
+      <span class="pp-meta-item pp-meta-item--tasks">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="1" y="1" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M3.5 6l2 2 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <span class="task-count">— tasks</span>
+      </span>
+      <span class="pp-meta-item pp-meta-item--due">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1.5"/><path d="M6 3.5V6l1.5 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <span class="due-date">—</span>
+      </span>
+    </div>
+    <div class="pp-progress-wrap">
+      <div class="pp-progress-label">
+        <span>Progress</span>
+        <span class="pp-progress-pct">0%</span>
+      </div>
+      <div class="pp-progress-track">
+        <div class="pp-progress-fill" style="width:0%"></div>
+      </div>
+    </div>
+    <a class="pp-card-cta" href="">View Project →</a>
+  </div>
+</template>
+
+<script src="/assets/custom_portal/js/projects.js"></script>
+{% endblock %}

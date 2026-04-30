@@ -247,3 +247,14 @@ app_license = "mit"
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
 
+
+# ── Project Portal additions ──────────────────────────────────────────────────
+web_include_css = ["/assets/project_portal/css/portal.css"]
+
+portal_menu_items = [
+    {"title": "Projects", "route": "/projects", "reference_doctype": "Project", "role": ""},
+]
+
+website_route_rules = [
+    {"from_route": "/projects/<path:name>", "to_route": "projects"},
+]
